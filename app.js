@@ -10,7 +10,11 @@ function asignarTextoElemento(elemento, texto) {
 
 function verificarIntento() {
     let numeroDeUsuario = parseInt(document.getElementById('valorUsuario').value);
-    
+    if (isNaN(numeroDeUsuario) || numeroDeUsuario < 1 || numeroDeUsuario > 10) {
+        alert('El valor indicado no es correcto. Indica un número del 1 al 10');
+        limpiarCaja();
+        return;
+    }
     if (numeroDeUsuario === numeroSecreto) {
         asignarTextoElemento('p',`Acertaste el número en ${intentos} ${(intentos === 1) ? 'vez' : 'veces'}`);
         document.getElementById('reiniciar').removeAttribute('disabled');
